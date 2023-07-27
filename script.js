@@ -5,18 +5,34 @@ document.addEventListener("DOMContentLoaded", function () {
       { nombre: "Armando", saldo: 67, password: "Armando_789" }
     ];
   
+    var form = document.getElementById("formulario");
+    form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Evitar que el formulario se envíe
+    ingresar(); // Llamar a la función ingresar() manualmente
+  });
+
+
     var selectedAccount;
     var passwordInput = document.getElementById("password");
     var opcionesDiv = document.getElementById("opciones");
     var resultadoDiv = document.getElementById("resultado");
+    var cuentasSelect = document.getElementById("cuentasSelect");
+    var ingresarBtn = document.getElementById("ingresarBtn");
+    var consultarSaldoBtn = document.getElementById("consultarSaldoBtn");
   
-    document.getElementById("ingresarBtn").addEventListener("click", ingresar);
-    document.getElementById("consultarSaldoBtn").addEventListener("click", consultarSaldo);
-    document.getElementById("ingresarMontoBtn").addEventListener("click", ingresarMonto);
-    document.getElementById("retirarMontoBtn").addEventListener("click", retirarMonto);
+    cuentasSelect.addEventListener("change", reiniciarSesion);
+    ingresarBtn.addEventListener("click", ingresar);
+  
+    function reiniciarSesion() {
+      selectedAccount = null;
+      passwordInput.value = "";
+      opcionesDiv.style.display = "none";
+      resultadoDiv.innerHTML = "";
+      consultarSaldoBtn.style.display = "none";
+    }
   
     function ingresar() {
-      var selectedOption = document.getElementById("cuentasSelect").value;
+      var selectedOption = cuentasSelect.value;
       var password = passwordInput.value;
   
       if (password.trim() === "") {
@@ -28,15 +44,22 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedAccount = cuentas[selectedOption];
         passwordInput.value = "";
         opcionesDiv.style.display = "block";
+        consultarSaldoBtn.style.display = "block";
       } else {
         alert("Contraseña incorrecta. Intenta nuevamente.");
         passwordInput.value = "";
         opcionesDiv.style.display = "none";
+        consultarSaldoBtn.style.display = "none";
       }
     }
   
     function consultarSaldo() {
-      resultadoDiv.innerHTML = "Saldo actual: $" + selectedAccount.saldo;
+      if (!selectedAccount) {
+        alert("Por favor, selecciona una cuenta e inicia sesión.");
+        return;
+      }
+  
+      resultadoDiv.innerHTML = "<p style='font-size: 30px;'>Tu saldo disponible: $" + selectedAccount.saldo + "</p>";
     }
   
     function ingresarMonto() {

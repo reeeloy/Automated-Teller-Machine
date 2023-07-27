@@ -13,23 +13,21 @@
     <option value="2">Armando</option>
   </select>
   <br>
-  <div class="form-group">
+  <form id="formulario" class="form-group">
     <label for="password">Ingrese el password:</label>
     <input type="password" id="password" class="form-control">
-  </div>
+  </form>
   <button id="ingresarBtn" class="btn btn-primary">Ingresar</button>
   <br><br>
   <div id="opciones" style="display: none;">
     <h2>Opciones:</h2>
-    <button onclick="consultarSaldo()" class="btn btn-info">Consultar Saldo</button>
-    <button onclick="ingresarMonto()" class="btn btn-success">Ingresar Monto</button>
-    <button onclick="retirarMonto()" class="btn btn-warning">Retirar Monto</button>
+    <div class="row">
+      <button id="consultarSaldoBtn" class="btn btn-info col-4">Consultar Saldo</button>
+      <button onclick="ingresarMonto()" class="btn btn-success col-4">Ingresar Monto</button>
+      <button onclick="retirarMonto()" class="btn btn-warning col-4">Retirar Monto</button>
+    </div>
   </div>
   <div id="resultado"></div>
-
-  <script>
-    // ... El resto del código JavaScript permanece igual ...
-  </script>
 
   <!-- Enlace a Bootstrap JS y jQuery (necesario para Bootstrap) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
