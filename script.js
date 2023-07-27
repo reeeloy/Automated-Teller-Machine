@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var ingresarBtn = document.getElementById("ingresarBtn");
   var consultarSaldoBtn = document.getElementById("consultarSaldoBtn");
   var passwordDiv = document.getElementById("passwordDiv");
+  var saludoDiv = document.getElementById("saludo");
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resultadoDiv.innerHTML = "";
     consultarSaldoBtn.style.display = "none";
     passwordDiv.style.display = "block";
+    saludoDiv.style.display = "none";
   }
 
   function ingresar(event) {
@@ -41,18 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordInput.value = "";
       opcionesDiv.style.display = "block";
       consultarSaldoBtn.style.display = "block";
-      passwordDiv.style.display = "none"; // Ocultar el mensaje y la barra de contraseña
+      passwordDiv.style.display = "none";
+      mostrarSaludo(cuentas[selectedOption].nombre); // Mostrar el mensaje de saludo
     } else {
-      if (password.trim() !== "") {
-        alert("Contraseña incorrecta. Intenta nuevamente.");
-      }
+      alert("Contraseña incorrecta. Intenta nuevamente.");
       passwordInput.value = "";
       opcionesDiv.style.display = "none";
       consultarSaldoBtn.style.display = "none";
-      passwordDiv.style.display = "block"; // Mostrar el mensaje y la barra de contraseña nuevamente
+      passwordDiv.style.display = "block";
+      saludoDiv.style.display = "none";
     }
   }
-});
+
+  function mostrarSaludo(nombreCuenta) {
+    saludoDiv.innerText = "¡Hola! " + nombreCuenta;
+    saludoDiv.style.display = "block";
+  }
+
 
   function consultarSaldo() {
     if (!selectedAccount) {
@@ -97,4 +104,5 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Ingresa un monto válido.");
     }
-  }
+    }
+  });
