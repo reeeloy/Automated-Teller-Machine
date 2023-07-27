@@ -5,13 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
       { nombre: "Armando", saldo: 67, password: "Armando_789" }
     ];
   
-    var form = document.getElementById("formulario");
-    form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Evitar que el formulario se envíe
-    ingresar(); // Llamar a la función ingresar() manualmente
-  });
-
-
     var selectedAccount;
     var passwordInput = document.getElementById("password");
     var opcionesDiv = document.getElementById("opciones");
@@ -19,9 +12,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var cuentasSelect = document.getElementById("cuentasSelect");
     var ingresarBtn = document.getElementById("ingresarBtn");
     var consultarSaldoBtn = document.getElementById("consultarSaldoBtn");
+    var passwordDiv = document.getElementById("passwordDiv");
   
     cuentasSelect.addEventListener("change", reiniciarSesion);
     ingresarBtn.addEventListener("click", ingresar);
+  
+    document.getElementById("formulario").addEventListener("submit", function (event) {
+      event.preventDefault(); // Evitar que el formulario se envíe al presionar "Enter" en la barra de contraseña
+      ingresar();
+    });
   
     function reiniciarSesion() {
       selectedAccount = null;
@@ -29,13 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
       opcionesDiv.style.display = "none";
       resultadoDiv.innerHTML = "";
       consultarSaldoBtn.style.display = "none";
+      passwordDiv.style.display = "block";
     }
   
     function ingresar() {
       var selectedOption = cuentasSelect.value;
       var password = passwordInput.value;
   
-      if (password.trim() === "") {
+      if (password.trim() === "" && passwordDiv.style.display === "block") {
         alert("Por favor, ingresa tu contraseña.");
         return;
       }
@@ -45,11 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
         passwordInput.value = "";
         opcionesDiv.style.display = "block";
         consultarSaldoBtn.style.display = "block";
+        passwordDiv.style.display = "none"; // Ocultar el mensaje y la barra de contraseña
       } else {
         alert("Contraseña incorrecta. Intenta nuevamente.");
         passwordInput.value = "";
         opcionesDiv.style.display = "none";
         consultarSaldoBtn.style.display = "none";
+        passwordDiv.style.display = "block"; // Mostrar el mensaje y la barra de contraseña nuevamente
       }
     }
   

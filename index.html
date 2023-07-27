@@ -12,17 +12,20 @@
     <option value="1">Liliana</option>
     <option value="2">Armando</option>
   </select>
-  <br>
-  <form id="formulario" class="form-group">
-    <label for="password">Ingrese el password:</label>
-    <input type="password" id="password" class="form-control">
-  </form>
-  <button id="ingresarBtn" class="btn btn-primary">Ingresar</button>
-  <br><br>
+  <div id="passwordDiv"> <!-- Nuevo div para contener el mensaje y la barra de contraseña -->
+    <br>
+    <form id="formulario" class="form-group">
+      <label for="password">Ingrese el password:</label>
+      <input type="password" id="password" class="form-control">
+      <br>
+      <button id="ingresarBtn" class="btn btn-primary">Ingresar</button>
+    </form>
+    <br><br>
+  </div>
   <div id="opciones" style="display: none;">
     <h2>Opciones:</h2>
     <div class="row">
-      <button id="consultarSaldoBtn" class="btn btn-info col-4">Consultar Saldo</button>
+      <button id="consultarSaldoBtn" onclick="consultarSaldo()" class="btn btn-info col-4">Consultar Saldo</button>
       <button onclick="ingresarMonto()" class="btn btn-success col-4">Ingresar Monto</button>
       <button onclick="retirarMonto()" class="btn btn-warning col-4">Retirar Monto</button>
     </div>
