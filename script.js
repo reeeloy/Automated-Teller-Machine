@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var opcionesDiv = document.getElementById("opciones");
   var resultadoDiv = document.getElementById("resultado");
   var cuentasSelect = document.getElementById("cuentasSelect");
+  var selectCuentaDiv = document.getElementById("selectCuentaDiv"); // Agregamos esta línea para obtener el elemento del mensaje de selección de cuenta
   var ingresarBtn = document.getElementById("ingresarBtn");
   var consultarSaldoBtn = document.getElementById("consultarSaldoBtn");
   var passwordDiv = document.getElementById("passwordDiv");
   var saludoDiv = document.getElementById("saludo"); // Agregamos esta línea para obtener el elemento del saludo
-  var seleccionCuentaHeader = document.getElementById("seleccionCuentaHeader"); // Elemento del encabezado "Seleccione una cuenta"
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     consultarSaldoBtn.style.display = "none";
     passwordDiv.style.display = "block";
     saludoDiv.style.display = "none"; // Ocultar el mensaje de saludo
-    seleccionCuentaHeader.style.display = "block"; // Mostrar el encabezado "Seleccione una cuenta"
+    selectCuentaDiv.style.display = "block"; // Mostrar el mensaje de selección de cuenta
   }
 
   function ingresar(event) {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordDiv.style.display = "none"; // Ocultar el mensaje y la barra de contraseña
       saludoDiv.innerHTML = "¡Hola! " + cuentas[selectedOption].nombre; // Mostrar el mensaje de saludo
       saludoDiv.style.display = "block"; // Mostrar el mensaje de saludo
-      seleccionCuentaHeader.style.display = "none"; // Ocultar el encabezado "Seleccione una cuenta"
+      selectCuentaDiv.style.display = "none"; // Ocultar el mensaje de selección de cuenta
     } else {
       alert("Contraseña incorrecta. Intenta nuevamente.");
       passwordInput.value = "";
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       consultarSaldoBtn.style.display = "none";
       passwordDiv.style.display = "block"; // Mostrar el mensaje y la barra de contraseña nuevamente
       saludoDiv.style.display = "none"; // Ocultar el mensaje de saludo
-      seleccionCuentaHeader.style.display = "block"; // Mostrar el encabezado "Seleccione una cuenta"
+      selectCuentaDiv.style.display = "block"; // Mostrar el mensaje de selección de cuenta
     }
   }
 
