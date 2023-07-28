@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="container mt-5">
-  <div id="saludo" style="display: none; font-size:60px; font-weight: bold; margin-bottom: 20px;"></div>
+  <div id="saludo" style="display: none; font-size: 60px; font-weight: bold; margin-bottom: 20px;"></div>
   <div id="selectCuentaDiv" style="display: block;">
     <h1>Seleccione una cuenta:</h1>
     <select id="cuentasSelect" class="form-control">
@@ -18,7 +18,7 @@
   <div id="passwordDiv" style="display: block;"> <!-- Nuevo div para contener el mensaje y la barra de contraseña -->
     <br>
     <form id="formulario" class="form-group">
-      <label for="password">¡Bienvenido! Ingresa tu contraseña:</label>
+      <label for="password">Ingresa tu contraseña:</label>
       <input type="password" id="password" class="form-control">
       <br>
       <button id="ingresarBtn" class="btn btn-primary">Ingresar</button>
@@ -26,6 +26,7 @@
     <br><br>
   </div>
   <div id="opciones" style="display: none;">
+    <br><br><br>
     <h2>Opciones:</h2>
     <div class="row">
       <button id="consultarSaldoBtn" onclick="consultarSaldo()" class="btn btn-info col-4">Consultar Saldo</button>
@@ -34,6 +35,8 @@
     </div>
   </div>
   <div id="resultado"></div>
+  <button id="cerrarSesionBtn" onclick="cerrarSesion()" class="btn btn-primary" style="display: none;">Cerrar Sesión</button>
+
 
   <!-- Enlace a Bootstrap JS y jQuery (necesario para Bootstrap) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

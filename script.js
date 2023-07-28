@@ -10,11 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var opcionesDiv = document.getElementById("opciones");
   var resultadoDiv = document.getElementById("resultado");
   var cuentasSelect = document.getElementById("cuentasSelect");
-  var selectCuentaDiv = document.getElementById("selectCuentaDiv"); // Agregamos esta línea para obtener el elemento del mensaje de selección de cuenta
+  var selectCuentaDiv = document.getElementById("selectCuentaDiv");
   var ingresarBtn = document.getElementById("ingresarBtn");
   var consultarSaldoBtn = document.getElementById("consultarSaldoBtn");
   var passwordDiv = document.getElementById("passwordDiv");
-  var saludoDiv = document.getElementById("saludo"); // Agregamos esta línea para obtener el elemento del saludo
+  var saludoDiv = document.getElementById("saludo");
+  var cerrarSesionBtn = document.getElementById("cerrarSesionBtn");
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     passwordDiv.style.display = "block";
     saludoDiv.style.display = "none"; // Ocultar el mensaje de saludo
     selectCuentaDiv.style.display = "block"; // Mostrar el mensaje de selección de cuenta
+    cerrarSesionBtn.style.display = "none"; // Ocultar el botón de cerrar sesión
   }
 
   function ingresar(event) {
@@ -58,6 +60,23 @@ document.addEventListener("DOMContentLoaded", function () {
       saludoDiv.style.display = "none"; // Ocultar el mensaje de saludo
       selectCuentaDiv.style.display = "block"; // Mostrar el mensaje de selección de cuenta
     }
+  }
+
+  function cerrarSesion() {
+    // Ocultar el saludo y las opciones
+    saludoDiv.style.display = "none";
+    opcionesDiv.style.display = "none";
+
+    // Mostrar nuevamente la selección de cuenta y el formulario de ingreso
+    selectCuentaDiv.style.display = "block";
+    passwordDiv.style.display = "block";
+
+    // Limpiar el resultado
+    resultadoDiv.innerHTML = "";
+
+    // Ocultar el botón de cerrar sesión nuevamente
+    cerrarSesionBtn.style.display = "none";
+    document.getElementById("cerrarSesionBtn").style.display = "none"; // Ocultar el botón de cerrar sesión
   }
 
   function consultarSaldo() {
@@ -103,5 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Ingresa un monto válido.");
     }
+    
     }
   });
