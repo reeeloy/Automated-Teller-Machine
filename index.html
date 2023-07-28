@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="container mt-5">
-  <div id="saludo" style="display: none; font-size: 50px; font-weight: bold; margin-bottom: 20px;"></div>
-  <h1>Seleccione una cuenta:</h1>
+  <div id="saludo" style="display: none; font-size: 30px; font-weight: bold; margin-bottom: 20px;"></div>
+  <h1 id="seleccionCuentaHeader">Seleccione una cuenta:</h1>
   <select id="cuentasSelect" class="form-control">
     <option value="0">Tomas</option>
     <option value="1">Liliana</option>
@@ -16,7 +16,7 @@
   <div id="passwordDiv"> <!-- Nuevo div para contener el mensaje y la barra de contraseña -->
     <br>
     <form id="formulario" class="form-group">
-      <label for="password">Ingrese el password:</label>
+      <label for="password">¡Bienvenido! Ingresa tu contraseña:</label>
       <input type="password" id="password" class="form-control">
       <br>
       <button id="ingresarBtn" class="btn btn-primary">Ingresar</button>
@@ -32,9 +32,6 @@
     </div>
   </div>
   <div id="resultado"></div>
-  <div id="saludo" style="display: none;">
-    <!-- Elemento para mostrar el saludo -->
-  </div>
 
   <!-- Enlace a Bootstrap JS y jQuery (necesario para Bootstrap) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
