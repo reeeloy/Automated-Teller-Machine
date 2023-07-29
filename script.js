@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
+  cerrarSesionBtn.addEventListener("click", cerrarSesion);
 
   function reiniciarSesion() {
     selectedAccount = null;
@@ -27,13 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
     resultadoDiv.innerHTML = "";
     consultarSaldoBtn.style.display = "none";
     passwordDiv.style.display = "block";
-    saludoDiv.style.display = "none"; // Ocultar el mensaje de saludo
-    selectCuentaDiv.style.display = "block"; // Mostrar el mensaje de selección de cuenta
-    cerrarSesionBtn.style.display = "none"; // Ocultar el botón de cerrar sesión
+    saludoDiv.style.display = "none";
+    selectCuentaDiv.style.display = "block";
+    cerrarSesionBtn.style.display = "none";
   }
 
   function ingresar(event) {
-    event.preventDefault(); // Cancelar el envío del formulario al hacer clic en el botón "Ingresar"
+    event.preventDefault();
     var selectedOption = cuentasSelect.value;
     var password = passwordInput.value;
 
@@ -47,36 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordInput.value = "";
       opcionesDiv.style.display = "block";
       consultarSaldoBtn.style.display = "block";
-      passwordDiv.style.display = "none"; // Ocultar el mensaje y la barra de contraseña
-      saludoDiv.innerHTML = "¡Hola! " + cuentas[selectedOption].nombre; // Mostrar el mensaje de saludo
-      saludoDiv.style.display = "block"; // Mostrar el mensaje de saludo
-      selectCuentaDiv.style.display = "none"; // Ocultar el mensaje de selección de cuenta
+      passwordDiv.style.display = "none";
+      saludoDiv.innerHTML = "¡Hola! " + cuentas[selectedOption].nombre;
+      saludoDiv.style.display = "block";
+      selectCuentaDiv.style.display = "none";
+      cerrarSesionBtn.style.display = "block";
     } else {
       alert("Contraseña incorrecta. Intenta nuevamente.");
       passwordInput.value = "";
       opcionesDiv.style.display = "none";
       consultarSaldoBtn.style.display = "none";
-      passwordDiv.style.display = "block"; // Mostrar el mensaje y la barra de contraseña nuevamente
-      saludoDiv.style.display = "none"; // Ocultar el mensaje de saludo
-      selectCuentaDiv.style.display = "block"; // Mostrar el mensaje de selección de cuenta
+      passwordDiv.style.display = "block";
+      saludoDiv.style.display = "none";
+      selectCuentaDiv.style.display = "block";
+      cerrarSesionBtn.style.display = "none";
     }
   }
 
   function cerrarSesion() {
-    // Ocultar el saludo y las opciones
-    saludoDiv.style.display = "none";
-    opcionesDiv.style.display = "none";
-
-    // Mostrar nuevamente la selección de cuenta y el formulario de ingreso
-    selectCuentaDiv.style.display = "block";
-    passwordDiv.style.display = "block";
-
-    // Limpiar el resultado
-    resultadoDiv.innerHTML = "";
-
-    // Ocultar el botón de cerrar sesión nuevamente
-    cerrarSesionBtn.style.display = "none";
-    document.getElementById("cerrarSesionBtn").style.display = "none"; // Ocultar el botón de cerrar sesión
+    reiniciarSesion();
   }
 
   function consultarSaldo() {
@@ -122,6 +112,5 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Ingresa un monto válido.");
     }
-    
-    }
-  });
+  }
+});
