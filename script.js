@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var passwordDiv = document.getElementById("passwordDiv");
   var saludoDiv = document.getElementById("saludo");
   var cerrarSesionBtn = document.getElementById("cerrarSesionBtn");
+  var bienvenidaDiv = document.getElementById("bienvenidaDiv");
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       saludoDiv.style.display = "block";
       selectCuentaDiv.style.display = "none";
       cerrarSesionBtn.style.display = "block";
+      bienvenidaDiv.style.display = "none";
     } else {
       alert("Contraseña incorrecta. Intenta nuevamente.");
       passwordInput.value = "";
@@ -67,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function cerrarSesion() {
     reiniciarSesion();
+    bienvenidaDiv.style.display = "block"; // Mostrar el mensaje de bienvenida al cerrar sesión
   }
 
   function consultarSaldo() {
