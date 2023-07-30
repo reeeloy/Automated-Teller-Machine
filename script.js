@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var saludoDiv = document.getElementById("saludo");
   var cerrarSesionBtn = document.getElementById("cerrarSesionBtn");
   var bienvenidaDiv = document.getElementById("bienvenidaDiv");
+  var saldoDisponibleDiv = document.getElementById("saldoDisponible"); // Agregar el elemento para el saldo disponible
+
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
@@ -56,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       selectCuentaDiv.style.display = "none";
       cerrarSesionBtn.style.display = "block";
       bienvenidaDiv.style.display = "none";
+      saldoDisponibleDiv.style.display = "none";
     } else {
       alert("Contraseña incorrecta. Intenta nuevamente.");
       passwordInput.value = "";
@@ -65,12 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
       saludoDiv.style.display = "none";
       selectCuentaDiv.style.display = "block";
       cerrarSesionBtn.style.display = "none";
+      saldoDisponibleDiv.style.display = "none";
     }
   }
 
   function cerrarSesion() {
     reiniciarSesion();
     bienvenidaDiv.style.display = "block"; // Mostrar el mensaje de bienvenida al cerrar sesión
+    saldoDisponibleDiv.style.display = "none"; // Ocultar el saldo disponible al cerrar sesión
   }
 
   function consultarSaldo() {
@@ -78,10 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Por favor, selecciona una cuenta e inicia sesión.");
       return;
     }
-  
-    var saldoDisponibleDiv = document.getElementById("saldoDisponible");
+
     saldoDisponibleDiv.innerHTML = "Tu saldo disponible: $" + selectedAccount.saldo;
-    saldoDisponibleDiv.style.display = "block";
+    saldoDisponibleDiv.style.display = "block"; 
+    saldoDisponibleDiv.style.fontSize = "35px";
   }
 
   function ingresarMonto() {
