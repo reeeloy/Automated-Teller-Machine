@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
   cerrarSesionBtn.addEventListener("click", cerrarSesion);
+  consultarSaldoBtn.addEventListener("click", consultarSaldo);
 
   function reiniciarSesion() {
     selectedAccount = null;
@@ -77,8 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Por favor, selecciona una cuenta e inicia sesión.");
       return;
     }
-
-    resultadoDiv.innerHTML = "<p style='font-size: 30px;'>Tu saldo disponible: $" + selectedAccount.saldo + "</p>";
+  
+    var saldoDisponibleDiv = document.getElementById("saldoDisponible");
+    saldoDisponibleDiv.innerHTML = "Tu saldo disponible: $" + selectedAccount.saldo;
+    saldoDisponibleDiv.style.display = "block";
   }
 
   function ingresarMonto() {
