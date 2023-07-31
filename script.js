@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function consultarSaldo() {
     if (!selectedAccount) {
-      alert("Por favor, selecciona una cuenta e inicia sesión.");
+      alert("Por favor, selecciona una cuenta de inicia sesión.");
       return;
     }
 
@@ -99,11 +99,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
   
-    var montoIngresado = prompt("Ingrese la cantidad del monto que desea agregar:");
+    var montoIngresado = prompt("Ingrese el monto a ingresar:");
   
     // Validar si el valor ingresado es un número
     if (!isNumeric(montoIngresado)) {
-      alert("Solo se permiten números.");
+      alert("Ingresa solo números.");
       return;
     }
   
@@ -114,7 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       selectedAccount.saldo += montoIngresado;
       resultadoDiv.innerHTML = "Monto ingresado: $" + montoIngresado + "<br> Nuevo saldo: $" + selectedAccount.saldo;
+      consultarSaldo(selectedAccount.saldo); // Actualizar el mensaje de "Saldo disponible:" en tiempo real
     }
+  }
+  
+  // Función para validar si el valor es un número
+  function isNumeric(value) {
+    return !isNaN(parseFloat(value)) && isFinite(value);
   }
   
   // Función para validar si el valor es un número
