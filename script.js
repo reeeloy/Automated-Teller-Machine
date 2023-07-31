@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var saludoDiv = document.getElementById("saludo");
   var cerrarSesionBtn = document.getElementById("cerrarSesionBtn");
   var bienvenidaDiv = document.getElementById("bienvenidaDiv");
-  var saldoDisponibleDiv = document.getElementById("saldoDisponible"); // Agregar el elemento para el saldo disponible
-
+  var saldoDisponibleDiv = document.getElementById("saldoDisponible"); 
+  
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
@@ -86,23 +86,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
     saldoDisponibleDiv.innerHTML = "Tu saldo disponible: $" + selectedAccount.saldo;
     saldoDisponibleDiv.style.display = "block"; 
-    saldoDisponibleDiv.style.fontSize = "35px";
+    saldoDisponibleDiv.style.fontSize = "40px";
+    saldoDisponibleDiv.style.color = "rgba(27, 27, 141, 0.87)";
   }
 
-  function ingresarMonto() {
-    var monto = prompt("Ingrese el monto a ingresar:");
-    monto = parseInt(monto);
+  var ingresarMontoBtn = document.getElementById("ingresarMontoBtn");
+  ingresarMontoBtn.addEventListener("click", ingresarMonto);
 
-    if (!isNaN(monto)) {
-      if (monto <= 0) {
-        alert("El monto a ingresar debe ser mayor a cero.");
-      } else {
-        selectedAccount.saldo += monto;
-        resultadoDiv.innerHTML = "Monto ingresado: $" + monto + "<br> Nuevo saldo: $" + selectedAccount.saldo;
-      }
-    } else {
-      alert("Ingresa un monto válido.");
+  function ingresarMonto() {
+    if (!selectedAccount) {
+      alert("Por favor, selecciona una cuenta e inicia sesión.");
+      return;
     }
+  
+    var montoIngresado = prompt("Ingrese la cantidad del monto que desea agregar:");
+  
+    // Validar si el valor ingresado es un número
+    if (!isNumeric(montoIngresado)) {
+      alert("Solo se permiten números.");
+      return;
+    }
+  
+    montoIngresado = parseInt(montoIngresado);
+  
+    if (montoIngresado <= 0) {
+      alert("Ingresa un monto válido mayor a cero.");
+    } else {
+      selectedAccount.saldo += montoIngresado;
+      resultadoDiv.innerHTML = "Monto ingresado: $" + montoIngresado + "<br> Nuevo saldo: $" + selectedAccount.saldo;
+    }
+  }
+  
+  // Función para validar si el valor es un número
+  function isNumeric(value) {
+    return !isNaN(parseFloat(value)) && isFinite(value);
   }
 
   function retirarMonto() {
