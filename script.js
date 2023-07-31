@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var cerrarSesionBtn = document.getElementById("cerrarSesionBtn");
   var bienvenidaDiv = document.getElementById("bienvenidaDiv");
   var saldoDisponibleDiv = document.getElementById("saldoDisponible"); 
-  
 
   cuentasSelect.addEventListener("change", reiniciarSesion);
   ingresarBtn.addEventListener("click", ingresar);
@@ -98,17 +97,17 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Por favor, selecciona una cuenta e inicia sesión.");
       return;
     }
-  
+
     var montoIngresado = prompt("Ingrese el monto a ingresar:");
-  
+
     // Validar si el valor ingresado es un número
     if (!isNumeric(montoIngresado)) {
-      alert("Solo se aceptan números.");
+      alert("Completa el espacio vacío.");
       return;
     }
-  
+
     montoIngresado = parseInt(montoIngresado);
-  
+
     if (montoIngresado <= 0) {
       alert("Ingresa un monto válido mayor a cero.");
     } else {
@@ -117,13 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
       consultarSaldo(selectedAccount.saldo); // Actualizar el mensaje de "Saldo disponible:" en tiempo real
     }
   }
-  
-  // Función para validar si el valor es un número
-  function isNumeric(value) {
-    return !isNaN(parseFloat(value)) && isFinite(value);
-  }
-  
-  // Función para validar si el valor es un número
+
   function isNumeric(value) {
     return !isNaN(parseFloat(value)) && isFinite(value);
   }
@@ -133,39 +126,37 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Por favor, selecciona una cuenta e inicia sesión.");
       return;
     }
-  
+
     var montoRetirar = prompt("Ingrese el monto a retirar:");
-  
+
     // Validar si el valor ingresado es un número
     if (!isNumeric(montoRetirar)) {
-      alert("Solo se aceptan números.");
+      alert("Completa el espacio vacío.");
       return;
     }
-  
+
     montoRetirar = parseInt(montoRetirar);
-  
+
     if (montoRetirar <= 0) {
       alert("Ingresa un monto válido mayor a cero.");
       return;
     }
-  
+
     if (montoRetirar > selectedAccount.saldo) {
       alert("No tienes suficiente saldo para retirar esa cantidad.");
       return;
     }
-  
+
     if (selectedAccount.saldo - montoRetirar < 0) {
       alert("No puedes retirar esa cantidad, debe haber al menos $10 en la cuenta.");
       return;
     }
-  
+
     selectedAccount.saldo -= montoRetirar;
     resultadoDiv.innerHTML = "Monto retirado: -$" + montoRetirar + "<br> Nuevo saldo: $" + selectedAccount.saldo;
     consultarSaldo(selectedAccount.saldo); // Actualizar el mensaje de "Saldo disponible:" en tiempo real
   }
-  
-  // Resto del código permanece igual
-  
+
   // Asignar evento click al botón "Retirar Monto"
   var retirarMontoBtn = document.getElementById("retirarMontoBtn");
   retirarMontoBtn.addEventListener("click", retirarMonto);
