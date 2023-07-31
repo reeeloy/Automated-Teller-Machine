@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Validar si el valor ingresado es un número
     if (!isNumeric(montoIngresado)) {
-      alert("Ingresa solo números.");
+      alert("Solo se aceptan números.");
       return;
     }
   
