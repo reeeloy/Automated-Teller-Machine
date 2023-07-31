@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Ingresa un monto válido mayor a cero.");
     } else {
       selectedAccount.saldo += montoIngresado;
-      resultadoDiv.innerHTML = "Monto ingresado: $" + montoIngresado + "<br> Nuevo saldo: $" + selectedAccount.saldo;
+      resultadoDiv.innerHTML = "Monto ingresado: +$" + montoIngresado + "<br> Nuevo saldo: $" + selectedAccount.saldo;
       consultarSaldo(selectedAccount.saldo); // Actualizar el mensaje de "Saldo disponible:" en tiempo real
     }
   }
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     selectedAccount.saldo -= montoRetirar;
-    resultadoDiv.innerHTML = "Monto retirado: $" + montoRetirar + "<br> Nuevo saldo: $" + selectedAccount.saldo;
+    resultadoDiv.innerHTML = "Monto retirado: -$" + montoRetirar + "<br> Nuevo saldo: $" + selectedAccount.saldo;
     consultarSaldo(selectedAccount.saldo); // Actualizar el mensaje de "Saldo disponible:" en tiempo real
   }
   
